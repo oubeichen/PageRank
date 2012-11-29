@@ -1,5 +1,11 @@
 package PageRank;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -8,13 +14,6 @@ import org.htmlparser.filters.OrFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.*;
 
 public class newcrawler {
 
@@ -136,6 +135,7 @@ public class newcrawler {
                 parser.setEncoding("utf-8");
                 // 过滤 <frame> 标签的 filter，用来提取 frame 标签里的 src 属性所、表示的链接 
                 NodeFilter frameFilter = new NodeFilter() {
+                    @Override
                     public boolean accept(Node node) {
                         if (node.getText().startsWith("frame src=")) {
                             return true;
@@ -216,7 +216,6 @@ public class newcrawler {
                     }
                 }
             } catch (ParserException e) {
-                e.printStackTrace();
             }
             return links;
         }
@@ -228,6 +227,7 @@ public class newcrawler {
     }
     //定义过滤器，提取包含nju.edu.cn 开头的链接
     static LinkFilter filter = new LinkFilter() {
+        @Override
         public boolean accept(String url) {
             if (url.contains("nju.edu.cn")) {
                 return true;

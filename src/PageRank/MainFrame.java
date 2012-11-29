@@ -1,16 +1,9 @@
 /**
- * PageRank1.0
- * 说明：
- * 最大数量：爬虫爬取的网页数量最大值
- * 超时：对于每个网页，超过设定时间无响应后爬虫将自动断开连接
- * 运行：爬虫+PageRank
- * 跳过爬虫运行：仅PageRank，使用上次爬虫运行的结果
- * 初始页面：以一个包括nju.edu.cn的链接为起始页面
- * 
- * 生成文件：“院系链接关系.txt”(两行代表一个指向关系，一行为原网页一行为目标网页)、
- * “院系所有链接.txt”（每个涉及到的网页占一行）、
- * “链接数.txt”（一个数字，代表上次运行爬虫爬取的网页数）
- * “pagerank结果.txt”（pagerank运算结果）
+ * PageRank1.0 说明： 最大数量：爬虫爬取的网页数量最大值 超时：对于每个网页，超过设定时间无响应后爬虫将自动断开连接
+ * 运行：爬虫+PageRank 跳过爬虫运行：仅PageRank，使用上次爬虫运行的结果 初始页面：以一个包括nju.edu.cn的链接为起始页面
+ *
+ * 生成文件：“院系链接关系.txt”(两行代表一个指向关系，一行为原网页一行为目标网页)、 “院系所有链接.txt”（每个涉及到的网页占一行）、
+ * “链接数.txt”（一个数字，代表上次运行爬虫爬取的网页数） “pagerank结果.txt”（pagerank运算结果）
  */
 package PageRank;
 
@@ -285,6 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     class GoThread extends Thread {
 
+        @Override
         public void run() {//每个线程都运行go这个函数 
             go();
         }
@@ -351,7 +345,6 @@ public class MainFrame extends javax.swing.JFrame {
                 Methods.invokeStatic(JFrame.class, "setDefaultLookAndFeelDecorated", Boolean.TYPE, Boolean.TRUE);
                 Methods.invokeStatic(JDialog.class, "setDefaultLookAndFeelDecorated", Boolean.TYPE, Boolean.TRUE);
             } catch (NoSuchMethodException e) {
-                e.printStackTrace();
             }
         }
         // set the Quaqua Look and Feel in the UIManager

@@ -18,7 +18,7 @@ public class AboutDialog extends javax.swing.JDialog {
      * Creates new form AboutDialog
      */
     public AboutDialog(java.awt.Frame parent, boolean modal) {
-        super(parent,true);  
+        super(parent, true);
         initComponents();
         pack();
         Rectangle parentBounds = parent.getBounds();//显示在正中
@@ -111,10 +111,11 @@ public class AboutDialog extends javax.swing.JDialog {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-         
+
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 AboutDialog dialog = new AboutDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {

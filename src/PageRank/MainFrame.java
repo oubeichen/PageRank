@@ -226,31 +226,30 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void go() {//运行的后台线程
-        new File("院系链接关系.txt").delete();
-        new File("院系所有链接.txt").delete();
-        new File("链接数.txt").delete();
-        new File("pagerank结果.txt").delete();
         //删除文件，初始化
         jTextArea1.setText("");//清空显示
         try {
             max = Integer.parseInt(jTextField1.getText().toString());
             timeout = Integer.parseInt(jTextField2.getText().toString());
         } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this,"请输入数字！！","输入错误",javax.swing.JOptionPane.ERROR_MESSAGE); 
+            javax.swing.JOptionPane.showMessageDialog(this, "请输入数字！！", "输入错误", javax.swing.JOptionPane.ERROR_MESSAGE);
             t = null;
             return;
 
         } //输入非数字
-
+        if (!jTextField3.getText().contains(".nju.edu.cn")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "必须是南大的链接！！", "输入错误", javax.swing.JOptionPane.ERROR_MESSAGE);
+            t = null;
+            return;
+        }//输入非南大链接
         try {
             //重新开始之前的初始化开始
             newcrawler.clear(max, timeout);
             pagerank.clear(max);
-            if (!jTextField3.getText().contains(".nju.edu.cn")) {
-                javax.swing.JOptionPane.showMessageDialog(this,"必须是南大的链接！！","输入错误",javax.swing.JOptionPane.ERROR_MESSAGE); 
-                t = null;
-                return;
-            }
+            new File("院系链接关系.txt").delete();
+            new File("院系所有链接.txt").delete();
+            new File("链接数.txt").delete();
+            new File("pagerank结果.txt").delete();
             //重新开始之前的初始化结束
             newcrawler.MyCrawler.crawling(new String[]{"http://" + jTextField3.getText()});
             FileWriter fwall = new FileWriter("院系所有链接.txt", false);
@@ -315,7 +314,7 @@ public class MainFrame extends javax.swing.JFrame {
             if (new File("院系链接关系.txt").exists() && new File("院系所有链接.txt").exists() && new File("链接数.txt").exists()) {
             } else //说明文件不存在，尚未运行过爬虫
             {
-                javax.swing.JOptionPane.showMessageDialog(this,"尚未运行过爬虫，请点击Run按钮运行！","操作错误",javax.swing.JOptionPane.ERROR_MESSAGE); 
+                javax.swing.JOptionPane.showMessageDialog(this, "尚未运行过爬虫，请点击Run按钮运行！", "操作错误", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
             }
             FileReader fr = new FileReader(new File("链接数.txt"));

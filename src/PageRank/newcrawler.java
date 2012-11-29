@@ -174,8 +174,8 @@ public class newcrawler {
                             if (linkUrl.endsWith("/")) {
                                 linkUrl = linkUrl.substring(0, (linkUrl.length() - 1));
                             }
-                            if (linkUrl.contains("@")) {
-                                break;//去除邮件、ftp地址，虽然可能去掉了一些奇特的URL
+                            if (linkUrl.contains("@")||linkUrl.endsWith(".zip")||linkUrl.endsWith(".rar")||linkUrl.endsWith(".docx")||linkUrl.endsWith(".xls")||linkUrl.endsWith(".doc")||linkUrl.endsWith(".pdf")) {
+                                break;//去除邮件、ftp、文件地址，虽然可能去掉了一些奇特的URL
                             }
                             links.add(linkUrl);
                         }
@@ -208,9 +208,10 @@ public class newcrawler {
                             if (frame.endsWith("/")) {
                                 frame = frame.substring(0, (frame.length() - 1));//以斜杠结束的和没有斜杠的是一样的URL
                             }
-                            if (frame.contains("@")) {
-                                break;//去除邮件、ftp地址，虽然可能去掉了一些奇特的URL
-                            }							//System.out.println(url + "\t--->\t" + frame);
+                            if (frame.contains("@")||frame.endsWith(".zip")||frame.endsWith(".rar")||frame.endsWith(".docx")||frame.endsWith(".xls")||frame.endsWith(".doc")||frame.endsWith(".pdf")) {
+                                break;//去除邮件、ftp、文件地址，虽然可能去掉了一些奇特的URL
+                            }							
+                            //System.out.println(url + "\t--->\t" + frame);
                             links.add(frame);
                         }
                     }

@@ -7,10 +7,6 @@ package PageRank;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -25,7 +21,7 @@ public class AboutDialog extends javax.swing.JDialog {
         super(parent,true);  
         initComponents();
         pack();
-        Rectangle parentBounds = parent.getBounds();
+        Rectangle parentBounds = parent.getBounds();//显示在正中
         Dimension size = getSize();
         // Center in the parent
         int x = Math.max(0, parentBounds.x + (parentBounds.width - size.width) / 2);

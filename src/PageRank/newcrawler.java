@@ -151,9 +151,9 @@ public class newcrawler
 							//System.out.println(url + "\t--->\t" + linkUrl + "         " + text);
                                                         if(!linkUrl.startsWith("http"))break;
 							int reposition = linkUrl.indexOf("#");
-							if (reposition != -1)	linkUrl = linkUrl.substring(0,(reposition));
-							if (linkUrl.contains(":80/")) linkUrl = linkUrl.replace(":80/","");
-                                                        if (linkUrl.endsWith(":80"))linkUrl = linkUrl.substring(0, (linkUrl.length()-3));
+							if (reposition != -1)	linkUrl = linkUrl.substring(0,(reposition));//带#号的之后可以忽略
+							if (linkUrl.contains(":80/")) linkUrl = linkUrl.replace(":80/","");//带80端口的和不带80端口的是一样的URL
+                                                        if (linkUrl.endsWith(":80"))linkUrl = linkUrl.substring(0, (linkUrl.length()-3));//以斜杠结束的和没有斜杠的是一样的URL
 							if (linkUrl.endsWith("/")) linkUrl = linkUrl.substring(0, (linkUrl.length()-1));
 							if (linkUrl.contains("@"))break;//去除邮件、ftp地址，虽然可能去掉了一些奇特的URL
 							links.add(linkUrl);
@@ -172,12 +172,12 @@ public class newcrawler
 						
 						if(filter.accept(frame))
 						{
-                                                        if(!frame.startsWith("http"))break;
+                            if(!frame.startsWith("http"))break;
 							int reposition = frame.indexOf("#");
-							if (reposition != -1)	frame = frame.substring(0,(reposition));
+							if (reposition != -1)	frame = frame.substring(0,(reposition));//带#号的之后可以忽略
 							if (frame.contains(":80/")) frame = frame.replace(":80/","");
-                                                        if (frame.endsWith(":80"))frame = frame.substring(0, (frame.length()-3));
-							if (frame.endsWith("/")) frame = frame.substring(0,(frame.length()-1));
+                            if (frame.endsWith(":80"))frame = frame.substring(0, (frame.length()-3));//带80端口的和不带80端口的是一样的URL
+							if (frame.endsWith("/")) frame = frame.substring(0,(frame.length()-1));//以斜杠结束的和没有斜杠的是一样的URL
 							if(frame.contains("@"))break;//去除邮件、ftp地址，虽然可能去掉了一些奇特的URL
 							//System.out.println(url + "\t--->\t" + frame);
 							links.add(frame);
@@ -291,14 +291,14 @@ public class newcrawler
 		
 		//newcrawler craw = new newcrawler();
 		//Crawler crawler = new Crawler();
-		newcrawler.MyCrawler.crawling(new String[]{"http://www.nju.edu.cn"});
+		newcrawler.MyCrawler.crawling(new String[]{"http://www.nju.edu.cn"});//设置种子，运行 爬虫
 
 		//PrintStream allurlOut = new PrintStream(allurloutput);
 		//System.setOut(allurlOut);
 		//System.out.println("所有链接:");
 		//int i = 0;
 		FileWriter fwall=new FileWriter("院系所有链接.txt",false);
-		for(String Visitedlink:LinkQueue.getVisitedUrl())
+		for(String Visitedlink:LinkQueue.getVisitedUrl())//另外一个文件存储所有爬到的URL
 		{
 			fwall.write(Visitedlink+"\n");
 			//System.out.println(Visitedlink);

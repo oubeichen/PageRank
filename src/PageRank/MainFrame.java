@@ -24,18 +24,18 @@ import javax.swing.UIManager;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    static void setprogress(int num, String url) {
+    static void setprogress(int num, String url) {//显示百分比
         jTextArea1.setText("Progressing...." + num + " of " + max + "\n" + url);
         jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
         SwingUtilities.invokeLater(run);
     }
 
-    static void settext(String str) {
+    static void settext(String str) {//显示文字
         jTextArea1.setText(str);
         jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
     }
 
-    static void appendaline(String str) {
+    static void appendaline(String str) {//串接文字
         jTextArea1.append(str + "\n");
         //jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
     }
@@ -46,7 +46,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         jTextArea1.setText("");
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//设置显示在屏幕正中
         Dimension frameSize = getSize();
         setLocation(new Point((screenSize.width - frameSize.width) / 2,
                 (screenSize.height - frameSize.width) / 2));
@@ -225,7 +225,7 @@ public class MainFrame extends javax.swing.JFrame {
         addd.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void go() {
+    private void go() {//运行的后台线程
         new File("院系链接关系.txt").delete();
         new File("院系所有链接.txt").delete();
         new File("链接数.txt").delete();
@@ -276,15 +276,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     class GoThread extends Thread {
 
-        public void run() {
-            //do something...  
+        public void run() {//每个线程都运行go这个函数 
             go();
         }
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (t == null) {
+        if (t == null) {//新建函数来后台爬虫
             t = new GoThread();
             t.start();
         }
@@ -336,6 +335,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         //</editor-fold>
+        //==========================外观皮肤设置开始======================
         // set system properties here that affect Quaqua
         if (!System.getProperty("os.name").toLowerCase().startsWith("mac")) {
             try {
@@ -354,6 +354,7 @@ public class MainFrame extends javax.swing.JFrame {
             // take an appropriate action here
             System.err.println("Oops!  Something went wrong!");
         }
+        //==========================外观皮肤设置结束======================
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

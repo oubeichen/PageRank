@@ -56,10 +56,14 @@ public class AboutDialog extends javax.swing.JDialog {
         jScrollPane1.setBorder(null);
 
         jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(220, 220, 220));
+        jTextArea1.setBackground(new java.awt.Color(230, 230, 230));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("黑体", 0, 13)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setText("小组成员(按学号排序)：\n马洋洋 \t111220082\n孟占帅 \t111220083\n缪顾敏 \t111220084\n牛晓帆 \t111220085\n欧北辰 \t111220086\n蒲阳\t111220087\n钱宝燕\t111220089\n钱炘祺\t111220090");
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextArea1.setFocusable(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("OK");

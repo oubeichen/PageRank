@@ -68,6 +68,9 @@ public class pagerank {
         }
         for (int p = 0; p < TOTAL; p++) //总的迭代循环
         {
+            int now = (p+1)*100/TOTAL;
+            MainFrame.setpagerank(now);//此循环为最占时间的部分，因此在此来输出当前进度
+            
             for (int i = 0; i < TOTAL; i++) {
                 for (int j = 0; j < outlink[i]; j++) {
                     prtmp[j] += (pr[i] * ALPHA) / outlink[i];
@@ -87,8 +90,8 @@ public class pagerank {
         PrintStream printout = new PrintStream(out);
         System.setOut(printout);
 
-        MainFrame.settext("");
-        for (int i = 0; i < TOTAL; i++) {
+        MainFrame.settext("");//清空GUI界面的输出显示
+        for (int i = 0; i < TOTAL; i++) {//从大到小输出
             for (int j = 0; j < TOTAL; j++) {
                 if (pr[j] > max) {
                     max = pr[j];
@@ -101,7 +104,7 @@ public class pagerank {
             max = 0;
         }
     }
-
+    //测试用main函数，此工程中不用
     public static void main(String[] args) throws Exception {
         //InputStream alllink = new FileInputStream("院系链接关系.txt");
         //InputStream allurlin = new FileInputStream("院系所有链接.txt");		

@@ -273,7 +273,7 @@ public class newcrawler {
                     continue;
                 }
                 int now = LinkQueue.getVisitedUrlNum();
-                MainFrame.setprogress(now, visitUrl);//输出当前进行到多少个链接到GUI界面
+                MainFrame.setcrawling(now+1, visitUrl);//输出当前进行到多少个链接到GUI界面
                 //System.out.println("链接" + LinkQueue.getVisitedUrlNum() + ":\t" + visitUrl);
                 //该URL 放入已访问的URL 中
                 LinkQueue.addVisitedUrl(visitUrl);
@@ -307,7 +307,7 @@ public class newcrawler {
         }
     }
 
-    //测试的 main 方法  
+    //测试的 main 方法 此工程中不用 
     public static void main(String[] args) throws IOException {
         //OutputStream output = new FileOutputStream("院系链接关系.txt");
         //OutputStream allurloutput = new FileOutputStream("院系所有链接.txt");

@@ -27,12 +27,16 @@ import javax.swing.UIManager;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    static void setprogress(int num, String url) {//显示百分比
-        jTextArea1.setText("Progressing...." + num + " of " + max + "\n" + url);
+    static void setcrawling(int num, String url) {//显示百分比
+        jTextArea1.setText("Crawler is running...." + num + " of " + max + "\n" + url);
         jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
         SwingUtilities.invokeLater(run);
     }
-
+    static void setpagerank(int num) {//显示百分比
+        jTextArea1.setText("Pagerank calculation is running...." + num + "%" + "\n");
+        jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
+        SwingUtilities.invokeLater(run);
+    }
     static void settext(String str) {//显示文字
         jTextArea1.setText(str);
         jTextArea1.paintImmediately(jTextArea1.getX(), jTextArea1.getY(), jTextArea1.getWidth(), jTextArea1.getHeight());
@@ -348,6 +352,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    //工程的总 main 方法
     public static void main(String args[]) {
         //</editor-fold>
         //==========================外观皮肤设置开始======================

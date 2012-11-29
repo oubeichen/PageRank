@@ -109,6 +109,7 @@ public class AboutDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    //测试用main函数，此工程中不用
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
